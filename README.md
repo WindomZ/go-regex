@@ -4,8 +4,6 @@
 
 * Some regex match functions
 
-# Getting Started
-
 ## Installation
 
 ```
@@ -15,7 +13,7 @@ go get -u github.com/WindomZ/go-regex
 ## TODO
 
 * Usage and more demos
-* More practical functions
+* More useful functions
 * More Test and Benchmark
 
 ## LICENSE
