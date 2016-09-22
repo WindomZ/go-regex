@@ -2,7 +2,7 @@ package regexutil
 
 import "strings"
 
-// StandardTelephoneNumber get International telephone number from country and tel
+// StandardTelephoneNumber get international telephone number from country and tel
 func StandardTelephoneNumber(country, tel string) string {
 	if len(tel) == 0 {
 		return tel
