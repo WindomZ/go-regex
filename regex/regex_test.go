@@ -7,7 +7,7 @@ import (
 
 var ErrTest error = errors.New("There are some test errors")
 
-func Test_Han(t *testing.T) {
+func TestMatchHan(t *testing.T) {
 	if err := MatchHan("这是中文"); err != nil {
 		t.Fatal(err)
 	}
@@ -28,7 +28,7 @@ func Test_Han(t *testing.T) {
 	}
 }
 
-func Test_Tel(t *testing.T) {
+func TestMatchTel(t *testing.T) {
 	if err := MatchTel("13088880808"); err != nil {
 		t.Fatal(err)
 	}
@@ -43,7 +43,25 @@ func Test_Tel(t *testing.T) {
 	}
 }
 
-func Test_Email(t *testing.T) {
+func TestMatchChineseTel(t *testing.T) {
+	if err := MatchChineseTel("+8613088880808"); err != nil {
+		t.Fatal(err)
+	}
+	if err := MatchChineseTel("+86 17088880808"); err == nil {
+		t.Error(ErrTest)
+	}
+}
+
+func TestMatchInternationalTel(t *testing.T) {
+	if err := MatchInternationalTel("+8613088880808"); err != nil {
+		t.Fatal(err)
+	}
+	if err := MatchInternationalTel("+86 17088880808"); err == nil {
+		t.Error(ErrTest)
+	}
+}
+
+func TestMatchEmail(t *testing.T) {
 	if err := MatchEmail("admin@163.com"); err != nil {
 		t.Fatal(err)
 	}
