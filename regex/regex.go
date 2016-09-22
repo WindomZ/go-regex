@@ -47,8 +47,14 @@ func MatchChineseTel(s string) error {
 
 // MatchInternationalTel math if s is International telephone number
 func MatchInternationalTel(s string) error {
-	return match(`\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]`+
-		`\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$`, s)
+	return match(`\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|`+
+		`9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$`, s)
+}
+
+// MatchTelCountryCode math if s is International country`s code
+func MatchTelCountryCode(s string) error {
+	return match(`^(\+)?(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|`+
+		`9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)$`, s)
 }
 
 // MatchEmail math if s is email address
