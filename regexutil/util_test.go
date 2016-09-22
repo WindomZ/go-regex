@@ -26,3 +26,9 @@ func TestBaseTelephoneNumber(t *testing.T) {
 		t.Fatal("Error tel:", tel)
 	}
 }
+
+func TestBaseCountryCode(t *testing.T) {
+	if code := BaseCountryCode("+86"); code != "86" {
+		t.Fatal("Error code:", code)
+	}
+}

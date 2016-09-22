@@ -20,7 +20,7 @@ func StandardTelephoneNumber(country, tel string) string {
 	return strings.Replace(tel, "-", "", -1)
 }
 
-// BaseTelephoneNumber get base telephone number from country`s country and tel
+// BaseTelephoneNumber get base telephone number from country and tel
 func BaseTelephoneNumber(country, tel string) string {
 	if len(tel) == 0 {
 		return tel
@@ -32,4 +32,12 @@ func BaseTelephoneNumber(country, tel string) string {
 	}
 	tel = strings.Replace(strings.TrimSpace(tel), " ", "", -1)
 	return strings.Replace(tel, "-", "", -1)
+}
+
+// BaseCountryCode get base country`s code from country
+func BaseCountryCode(country string) string {
+	if len(country) == 0 {
+		return country
+	}
+	return strings.Replace(strings.TrimSpace(country), "+", "", -1)
 }
