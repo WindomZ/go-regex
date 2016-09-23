@@ -18,6 +18,10 @@ func TestStandardTelephoneNumber(t *testing.T) {
 	if err := regex.MatchChineseTel(tel); err != nil {
 		t.Fatal(err)
 	}
+	tel = StandardTelephoneNumber("", "86 - 13088880808")
+	if err := regex.MatchChineseTel(tel); err != nil {
+		t.Fatal(err)
+	}
 }
 
 func TestBaseTelephoneNumber(t *testing.T) {

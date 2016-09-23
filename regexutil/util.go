@@ -7,7 +7,7 @@ func StandardTelephoneNumber(country, tel string) string {
 	if len(tel) == 0 {
 		return tel
 	}
-	country = strings.Replace(country, "+", "", -1)
+	country = BaseCountryCode(country)
 	tel = strings.Replace(strings.TrimSpace(tel), " ", "", -1)
 	if strings.HasPrefix(tel, "+"+country) {
 	} else if len(country) != 0 {
@@ -16,6 +16,8 @@ func StandardTelephoneNumber(country, tel string) string {
 		} else {
 			tel = "+" + country + tel
 		}
+	} else if !strings.HasPrefix(tel, "+") {
+		tel = "+" + tel
 	}
 	return strings.Replace(tel, "-", "", -1)
 }
@@ -25,7 +27,7 @@ func BaseTelephoneNumber(country, tel string) string {
 	if len(tel) == 0 {
 		return tel
 	}
-	country = strings.Replace(country, "+", "", -1)
+	country = BaseCountryCode(country)
 	tel = strings.Replace(tel, "+", "", -1)
 	if len(country) != 0 && strings.HasPrefix(tel, country) {
 		tel = tel[len(country):]
@@ -39,5 +41,6 @@ func BaseCountryCode(country string) string {
 	if len(country) == 0 {
 		return country
 	}
-	return strings.Replace(strings.TrimSpace(country), "+", "", -1)
+	return strings.Replace(strings.Replace(strings.TrimSpace(country),
+		" ", "", -1), "+", "", -1)
 }
