@@ -32,10 +32,10 @@ func TestMatchTel(t *testing.T) {
 	if err := MatchTel("13088880808"); err != nil {
 		t.Fatal(err)
 	}
-	if err := MatchTel("17088880808"); err != nil {
+	if err := MatchTel("13088880808"); err != nil {
 		t.Fatal(err)
 	}
-	if err := MatchTel("+86 17088880808"); err == nil {
+	if err := MatchTel("+86 13088880808"); err == nil {
 		t.Fatal(ErrTest)
 	}
 	if err := MatchTel("13088880808122"); err == nil {
@@ -47,7 +47,16 @@ func TestMatchChineseTel(t *testing.T) {
 	if err := MatchChineseTel("+8613088880808"); err != nil {
 		t.Fatal(err)
 	}
-	if err := MatchChineseTel("+86 17088880808"); err == nil {
+	if err := MatchChineseTel("8613088880808"); err != nil {
+		t.Fatal(err)
+	}
+	if err := MatchChineseTel("13088880808"); err != nil {
+		t.Fatal(err)
+	}
+	if err := MatchChineseTel("+13088880808"); err == nil {
+		t.Fatal(ErrTest)
+	}
+	if err := MatchChineseTel("+86 13088880808"); err == nil {
 		t.Fatal(ErrTest)
 	}
 }
@@ -56,7 +65,7 @@ func TestMatchInternationalTel(t *testing.T) {
 	if err := MatchInternationalTel("+8613088880808"); err != nil {
 		t.Fatal(err)
 	}
-	if err := MatchInternationalTel("+86 17088880808"); err == nil {
+	if err := MatchInternationalTel("+86 13088880808"); err == nil {
 		t.Fatal(ErrTest)
 	}
 }

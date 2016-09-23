@@ -42,7 +42,8 @@ func MatchTel(s string) error {
 
 // MatchTel math if s is chinese telephone number
 func MatchChineseTel(s string) error {
-	return match(`\+861\d{10}$`, s)
+	//return match(`\+861\d{10}$`, s)
+	return match(`^((\+)?86)?1\d{10}$`, s)
 }
 
 // MatchInternationalTel math if s is international telephone number
