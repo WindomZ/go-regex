@@ -22,11 +22,11 @@ func BaseTelephoneNumber(country, tel string) string {
 		return tel
 	}
 	country = BaseCountryCode(country)
-	tel = strings.Replace(tel, "+", "", -1)
+	tel = strings.Replace(strings.Replace(strings.TrimSpace(tel),
+		" ", "", -1), "+", "", -1)
 	if len(country) != 0 && strings.HasPrefix(tel, country) {
 		tel = tel[len(country):]
 	}
-	tel = strings.Replace(strings.TrimSpace(tel), " ", "", -1)
 	return strings.Replace(tel, "-", "", -1)
 }
 
